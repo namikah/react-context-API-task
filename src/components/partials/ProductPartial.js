@@ -1,4 +1,5 @@
 import React from "react";
+import "./productPartial.css"
 import { useHistory } from "react-router-dom";
 import {
   Button,
@@ -10,7 +11,7 @@ import {
   CardTitle,
   Spinner,
 } from "reactstrap";
-import { useLoadingContext } from "../context/loading/";
+import { useLoadingContext } from "../../context/loading";
 
 function ProductPartial({ productsData }) {
   const { push } = useHistory();

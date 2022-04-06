@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { Button } from "reactstrap";
 import { useProductContext } from "../../context/Products";
 import Banner from "../../components/layouts/banner/Banner";
-import ProductPartial from "../../components/ProductPartial";
+import ProductPartial from "../../components/partials/ProductPartial";
 
 function Products() {
   const { state } = useLocation();
