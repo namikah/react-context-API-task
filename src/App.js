@@ -1,28 +1,30 @@
 import "./App.css";
-import ProductDetails from "./components/ProductDetails";
-import Navi from "./components/layouts/navbar/Navi";
-import { Switch } from "react-router-dom";
-import { Route } from "react-router-dom";
-import Home from "./components/Home";
-import Products from "./components/Products";
-import Login from "./components/Login";
-import CreateProducts from "./components/CreateProducts";
+import ProductDetails from "./pages/productDetail/ProductDetails";
+import Navi from "./components/layouts/header/Navi";
+import { Switch, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Products from "./pages/products/Products";
 import { Redirect } from "react-router-dom";
 import Footer from "./components/layouts/footer/Footer";
+import { ProductsProvider } from "./context/Products";
+import Login from "./pages/login/Login";
+import CreateProducts from "./pages/createProduct/CreateProducts";
 
 function App() {
   return (
     <div className="App">
-      <Navi />
-      <Switch>
-        <Route path={"/"} exact component={Home}></Route>
-        <Route path={"/products"} exact component={Products}></Route>
-        <Route path={"/productDetail"} exact component={ProductDetails}></Route>
-        <Route path={"/login"} exact component={Login}></Route>
-        <Route path={"/createProducts"} exact component={CreateProducts}></Route>
-        <Redirect to={"/error"}/>
-      </Switch>
-      <Footer/>
+      <ProductsProvider>
+        <Navi />
+        <Switch>
+          <Route path={"/"} exact component={Home} />
+          <Route path={"/products"} exact component={Products} />
+          <Route path={"/productDetail"} exact component={ProductDetails} />
+          <Route path={"/login"} exact component={Login} />
+          <Route path={"/createProducts"} exact component={CreateProducts} />
+          <Redirect to={"/error"} />
+        </Switch>
+        <Footer />
+      </ProductsProvider>
     </div>
   );
 }

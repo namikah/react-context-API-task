@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { productService } from "../API/services/productService";
+import { productService } from "../../API/services/productService";
+import { useProductContext } from "../../context/Products";
 
 const product = {
   name: "",
@@ -13,21 +14,25 @@ const product = {
 
 function CreateProducts() {
   const [products, setProducts] = useState(product);
+  const [{ setProductsData }] = useProductContext([]);
   const { push } = useHistory();
 
-  const postData = useCallback(() => {
+  const getAllProducts = useCallback(() => {
+    productService.getProducts().then(({ data }) => {
+      setProductsData(data);
+    });
+  }, [setProductsData]);
+
+  const createProduct = useCallback(() => {
     productService.postProducts(products).then(() => {
+      getAllProducts()
       push({
         pathname: "/products",
         search: "",
         state: true,
       });
     });
-  }, [products, push]);
-
-  const createProduct = () => {
-    postData();
-  };
+  }, [products, push,getAllProducts]);
 
   const getElementValues = (e) => {
     const { name, value } = e.target;

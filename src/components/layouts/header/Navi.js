@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
+import { useProductContext } from "../../../context/Products";
 
 function Navi() {
+  const [{ productsData }] = useProductContext([]);
   return (
     <Navbar color="light" light expand="md">
       <div className="container d-flex justify-content-between">
@@ -18,13 +20,17 @@ function Navi() {
             </NavLink>
           </NavItem>
         </Nav>
+        <div>
+          <span>Product count: {productsData.length}</span>
+        </div>
         <Nav>
-        <NavItem>
+          <NavItem>
             <NavLink to={"/login"} className="nav-link">
               Login
             </NavLink>
           </NavItem>
         </Nav>
+       
       </div>
     </Navbar>
   );

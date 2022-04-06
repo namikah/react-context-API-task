@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import Banner from "./layouts/banner/Banner";
+import Banner from "../../components/layouts/banner/Banner";
 
 const loginTo = {
   username: "",

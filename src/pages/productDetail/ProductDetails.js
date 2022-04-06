@@ -11,11 +11,13 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap";
-import { productService } from "../API/services/productService";
-import Banner from "./layouts/banner/Banner";
+import { productService } from "../../API/services/productService";
+import Banner from "../../components/layouts/banner/Banner";
+import { useProductContext } from "../../context/Products";
 
 function ProductDetails() {
   const [products, setProducts] = useState();
+  const [{setProductsData}] = useProductContext([]);
   const {push} = useHistory();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
@@ -26,8 +28,8 @@ function ProductDetails() {
       .get(
         `https://624ad9e1fd7e30c51c128ec3.mockapi.io/api/v1/products/${productId}`
       )
-      .then((res) => {
-        setProducts(res.data);
+      .then(({data}) => {
+        setProducts(data);
       });
   }, [productId]);
 
@@ -35,19 +37,26 @@ function ProductDetails() {
     getData();
   }, [getData]);
 
-  const deleteData = useCallback(() => {
+  const getAllProducts = useCallback(() => {
+    productService.getProducts().then(({ data }) => {
+      setProductsData(data);
+    });
+  }, [setProductsData]);
+
+  useEffect(() => {
+    getAllProducts();
+  }, [getAllProducts]);
+
+  const deleteProduct = useCallback(() => {
     productService.deleteProducts(productId).then(() => {
+      getAllProducts();
       push({
         pathname: "/products",
         search: "",
         state: true,
       });
     });
-  }, [productId,push]);
-
-  const deleteProduct = () => {
-    deleteData();
-  };
+  }, [productId,push,getAllProducts]);
 
   return (
     <div className="container">
