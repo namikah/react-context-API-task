@@ -10,11 +10,11 @@ import {
   CardTitle,
   Spinner,
 } from "reactstrap";
-import { useProductContext } from "../context/Products";
+import { useLoadingContext } from "../context/loading/";
 
 function ProductPartial({ productsData }) {
   const { push } = useHistory();
-  const [{ loading }] = useProductContext([]);
+  const [{ loading }] = useLoadingContext([]);
 
   const handleClickDetail = (e) => {
     const { id } = e.target;

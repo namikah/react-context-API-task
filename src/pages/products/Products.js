@@ -10,7 +10,6 @@ import ProductPartial from "../../components/ProductPartial";
 function Products() {
   const { state } = useLocation();
   const [{ productsData }] = useProductContext([]);
-  const [{ loading }] = useProductContext([]);
   const { push } = useHistory();
 
   if (!state) return <Redirect to={"/login"} />;
