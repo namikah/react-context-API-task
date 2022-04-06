@@ -1,3 +1,4 @@
+import "./navi.css"
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
@@ -6,7 +7,7 @@ import { useProductContext } from "../../../context/Products";
 function Navi() {
   const [{ productsData }] = useProductContext([]);
   return (
-    <Navbar color="light" light expand="md">
+    <Navbar color="light" light expand="md" className="navbar">
       <div className="container d-flex justify-content-between">
         <Nav className="mr-auto" navbar>
           <NavItem>
