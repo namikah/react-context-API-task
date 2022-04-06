@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import {
   Button,
   Card,
@@ -37,7 +36,7 @@ function ProductDetails() {
         setProducts(data);
         setLoading(false)
       });
-  }, [productId]);
+  }, [productId,setLoading]);
 
   useEffect(() => {
     getData();

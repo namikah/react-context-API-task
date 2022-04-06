@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { productService } from "../../API/services/productService";
+import Banner from "../../components/layouts/banner/Banner";
 import { useProductContext } from "../../context/Products";
 
 const product = {
@@ -25,14 +26,14 @@ function CreateProducts() {
 
   const createProduct = useCallback(() => {
     productService.postProducts(products).then(() => {
-      getAllProducts()
+      getAllProducts();
       push({
         pathname: "/products",
         search: "",
         state: true,
       });
     });
-  }, [products, push,getAllProducts]);
+  }, [products, push, getAllProducts]);
 
   const getElementValues = (e) => {
     const { name, value } = e.target;
@@ -40,8 +41,10 @@ function CreateProducts() {
   };
 
   return (
-    <div className="container col-3 mt-5">
-      <Form inline>
+    <div className="container">
+      <Banner title={"Create products"} />
+     <div className="row justify-content-center">
+     <Form inline className="col-3 ">
         <FormGroup className="mb-2 me-sm-2 mb-sm-0">
           <Label className="me-sm-2" for="name">
             Name
@@ -106,6 +109,7 @@ function CreateProducts() {
           Create
         </Button>
       </Form>
+     </div>
     </div>
   );
 }
