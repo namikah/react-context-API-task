@@ -36,7 +36,7 @@ function ProductPartial({ productsData }) {
       ) : (
         productsData &&
         productsData?.map(({ id, name, price, category, image, color }) => (
-          <Card key={id} className="col-3 p-3">
+          <Card key={id} className="col-3 p-3 gap-3">
             <CardImg alt="Card cap" src={image} top width="100%" />
             <CardBody>
               <CardTitle tag="h5">{name}</CardTitle>

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import {
   Button,
   Card,
@@ -10,26 +11,31 @@ import {
   CardSubtitle,
   CardText,
   CardTitle,
+  Spinner,
 } from "reactstrap";
 import { productService } from "../../API/services/productService";
 import Banner from "../../components/layouts/banner/Banner";
+import { useLoadingContext } from "../../context/loading";
 import { useProductContext } from "../../context/Products";
 
 function ProductDetails() {
   const [products, setProducts] = useState();
-  const [{setProductsData}] = useProductContext([]);
-  const {push} = useHistory();
+  const [{ setProductsData }] = useProductContext([]);
+  const [{ loading, setLoading }] = useLoadingContext([]);
+  const { push } = useHistory();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const productId = params.get("product");
 
   const getData = useCallback(() => {
+    setLoading(true);
     axios
       .get(
         `https://624ad9e1fd7e30c51c128ec3.mockapi.io/api/v1/products/${productId}`
       )
-      .then(({data}) => {
+      .then(({ data }) => {
         setProducts(data);
+        setLoading(false)
       });
   }, [productId]);
 
@@ -56,12 +62,12 @@ function ProductDetails() {
         state: true,
       });
     });
-  }, [productId,push,getAllProducts]);
+  }, [productId, push, getAllProducts]);
 
   return (
     <div className="container">
-      <Banner title={"Product detail"}/>
-      <div className="mt-5 mb-5 row justify-content-center">
+      <Banner title={"Product detail"} />
+      {loading ? <Spinner className="loading"></Spinner> : <div className="mt-5 mb-5 row justify-content-center">
         <Card key={products?.id}>
           <CardImg
             alt="Card cap"
@@ -79,7 +85,14 @@ function ProductDetails() {
           </CardBody>
         </Card>
         <Button style={{ color: "red" }} onClick={deleteProduct}>Delete</Button>
-      </div>
+        <Button onClick={() => {
+          push({
+            pathname: "/products",
+            search: "",
+            state: true,
+          });
+        }}>{"<- view all products ->"}</Button>
+      </div>}
     </div>
   );
 }
