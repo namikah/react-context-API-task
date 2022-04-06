@@ -5,14 +5,19 @@ const ProductContext = createContext([]);
 
 function ProductsProvider({ children }) {
   const [productsData, setProductsData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   React.useEffect(() => {
+    setLoading(true);
     productService.getProducts().then(({ data }) => {
       setProductsData(data);
+      setLoading(false);
     });
   }, []);
   return (
-    <ProductContext.Provider value={[{ productsData, setProductsData }]}>
+    <ProductContext.Provider
+      value={[{ productsData, setProductsData, loading, setLoading }]}
+    >
       {children}
     </ProductContext.Provider>
   );
