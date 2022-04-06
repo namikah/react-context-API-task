@@ -28,6 +28,9 @@ function ProductPartial({ productsData }) {
 
   return (
     <>
+    <div className="products-title">
+      <h4 className="title">PRODUCTS</h4>
+    </div>
       {loading ? (
         <Spinner className="loading"></Spinner>
       ) : (

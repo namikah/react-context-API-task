@@ -21,9 +21,7 @@ function Navi() {
             </NavLink>
           </NavItem>
         </Nav>
-        <div>
-          <span>Product count: {productsData.length}</span>
-        </div>
+        <h6>WE HAVE <span className='product-count-header'>{productsData.length}</span> REGISTERED PRODUCTS IN OUR WEB PAGE</h6>
         <Nav>
           <NavItem>
             <NavLink to={"/login"} className="nav-link">

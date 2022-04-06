@@ -6,3 +6,7 @@
     top: 0;
     z-index: 9999999 !important;
 }
+.product-count-header{
+    color: red;
+    font-size: 30px;
+}
