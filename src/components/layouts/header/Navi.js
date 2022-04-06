@@ -1,4 +1,4 @@
-import "./navi.css"
+import "./navi.css";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
@@ -21,7 +21,11 @@ function Navi() {
             </NavLink>
           </NavItem>
         </Nav>
-        <h6>WE HAVE <span className='product-count-header'>{productsData.length}</span> REGISTERED PRODUCTS IN OUR WEB PAGE</h6>
+        <h6>
+          WE HAVE{" "}
+          <span className="product-count-header">{productsData.length}</span>{" "}
+          REGISTERED PRODUCTS IN OUR WEB PAGE
+        </h6>
         <Nav>
           <NavItem>
             <NavLink to={"/login"} className="nav-link">
@@ -29,7 +33,6 @@ function Navi() {
             </NavLink>
           </NavItem>
         </Nav>
-       
       </div>
     </Navbar>
   );
