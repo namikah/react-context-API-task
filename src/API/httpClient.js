@@ -11,8 +11,8 @@ export class HttpClient {
     return await axios.get(`${this.dataUrl}/${endpoint}`);
   }
 
-  async post(endpoint, product) {
-    return await axios.post(`${this.dataUrl}/${endpoint}`, product);
+  async post(endpoint, object) {
+    return await axios.post(`${this.dataUrl}/${endpoint}`, object);
   }
 
   async delete(endpoint) {

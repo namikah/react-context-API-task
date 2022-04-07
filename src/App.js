@@ -10,6 +10,7 @@ import { ProductsProvider } from "./context/Products";
 import Login from "./pages/login/Login";
 import CreateProducts from "./pages/createProduct/CreateProducts";
 import { LoadingProvider } from "./context/loading/";
+import OurTeam from "./pages/ourTeam/OurTeam";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path={"/productDetail"} exact component={ProductDetails} />
             <Route path={"/login"} exact component={Login} />
             <Route path={"/createProducts"} exact component={CreateProducts} />
+            <Route path={"/ourTeam"} exact component={OurTeam} />
             <Redirect to={"/error"} />
           </Switch>
           <Footer />

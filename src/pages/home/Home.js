@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { useProductContext } from "../../context/Products";
 import Banner from "../../components/layouts/banner/Banner";
 import ProductPartial from "../../components/partials/ProductPartial";
+import OurTeam from "../ourTeam/OurTeam";
 
 function Home() {
   const [{ productsData }] = useProductContext([]);
@@ -17,6 +18,7 @@ function Home() {
       <div className="row justify-content-center">
         <ProductPartial productsData={getProductsForHome} />
       </div>
+      <OurTeam/>
     </div>
   );
 }
