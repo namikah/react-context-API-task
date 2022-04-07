@@ -1,0 +1,63 @@
+#my-offer {
+  padding: 50px 0;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+#my-offer .container h2 {
+  text-align: center;
+  padding: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #000000;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.5em;
+  font-size: 30px;
+}
+
+#my-offer .container > .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+#my-offer .container > .row div div {
+  text-align: center;
+  padding: 20px 25px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#my-offer .container > .row div div i {
+  padding: 15px;
+  font-size: 50px;
+  color: #555555;
+}
+
+#my-offer .container > .row div div h4 {
+  font-family: "Montserrat", sans-serif;
+  padding: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #555555;
+  line-height: 2em;
+  font-weight: 100;
+}
+
+#my-offer .container > .row div div p {
+  font-family: "Montserrat", sans-serif;
+  padding: 5px;
+  line-height: 2em;
+  color: #555555;
+  margin: 0 0 10px;
+  font-size: 12px;
+}
+
+#my-offer .container > .row div div:hover {
+  border: 1px solid #555555;
+  cursor: pointer;
+}
+
+#my-offer .container > .row div div:hover i {
+  color: black;
+}

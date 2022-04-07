@@ -1,5 +1,5 @@
 import React from "react";
-import "./productPartial.css"
+import "./productPartial.css";
 import { useHistory } from "react-router-dom";
 import {
   Button,
@@ -27,35 +27,39 @@ function ProductPartial({ productsData }) {
   };
 
   return (
-    <>
-    <div className="products-title">
-      <h4 className="title">PRODUCTS</h4>
+    <div className="container">
+      <div className="products-title">
+        <h4 className="title">PRODUCTS</h4>
+      </div>
+      <div className="row justify-content-center">
+        {loading ? (
+          <Spinner className="loading"></Spinner>
+        ) : (
+          productsData &&
+          productsData?.map(({ id, name, price, category, image, color }) => (
+            <div className="col-3 mb-4">
+              <Card key={id} className="p-1">
+                <CardImg alt="Card cap" src={image} top width="100%" />
+                <CardBody>
+                  <CardTitle tag="h5">{name}</CardTitle>
+                  <CardSubtitle className="mb-2 text-muted" tag="h6">
+                    Price: {price}
+                  </CardSubtitle>
+                  <CardText>Category: {category}</CardText>
+                  <Button
+                    style={{ backgroundColor: color }}
+                    id={id}
+                    onClick={handleClickDetail}
+                  >
+                    read more
+                  </Button>
+                </CardBody>
+              </Card>
+            </div>
+          ))
+        )}
+      </div>
     </div>
-      {loading ? (
-        <Spinner className="loading"></Spinner>
-      ) : (
-        productsData &&
-        productsData?.map(({ id, name, price, category, image, color }) => (
-          <Card key={id} className="col-3 p-3 gap-3">
-            <CardImg alt="Card cap" src={image} top width="100%" />
-            <CardBody>
-              <CardTitle tag="h5">{name}</CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Price: {price}
-              </CardSubtitle>
-              <CardText>Category: {category}</CardText>
-              <Button
-                style={{ backgroundColor: color }}
-                id={id}
-                onClick={handleClickDetail}
-              >
-                read more
-              </Button>
-            </CardBody>
-          </Card>
-        ))
-      )}
-    </>
   );
 }
 

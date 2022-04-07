@@ -20,7 +20,6 @@ function CreateProducts() {
   const [{ localLogin, setLocalLogin }] = useLoadingContext([]);
   const { push } = useHistory();
 
-
   const getAllProducts = useCallback(() => {
     productService.getProducts().then(({ data }) => {
       setProductsData(data);
@@ -28,9 +27,8 @@ function CreateProducts() {
   }, [setProductsData]);
 
   const createProduct = useCallback(
-    
     (e) => {
-  if(localStorage.getItem("login")===null) setLocalLogin(false)
+      if (localStorage.getItem("login") === null) setLocalLogin(false);
 
       if (!localLogin) {
         push({
@@ -50,7 +48,7 @@ function CreateProducts() {
         });
       }
     },
-    [products, push, getAllProducts, localLogin,setLocalLogin]
+    [products, push, getAllProducts, localLogin, setLocalLogin]
   );
 
   const getElementValues = (e) => {
@@ -59,81 +57,83 @@ function CreateProducts() {
   };
 
   return (
-    <div className="container">
+    <>
       <Banner title={"Create products"} />
-      <div className="row justify-content-center">
-        <Form onSubmit={createProduct} inline className="col-3 ">
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Label className="me-sm-2" for="name">
-              Name
-            </Label>
-            <Input
-              id="name"
-              name="name"
-              placeholder="name"
-              type="text"
-              onChange={getElementValues}
-              required
-            />
-          </FormGroup>
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Label className="me-sm-2" for="price">
-              Price
-            </Label>
-            <Input
-              id="price"
-              name="price"
-              placeholder="price"
-              type="text"
-              onChange={getElementValues}
-              required
-            />
-          </FormGroup>
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Label className="me-sm-2" for="category">
-              Category
-            </Label>
-            <Input
-              id="category"
-              name="category"
-              placeholder="category"
-              type="text"
-              onChange={getElementValues}
-              required
-            />
-          </FormGroup>
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Label className="me-sm-2" for="image">
-              Image
-            </Label>
-            <Input
-              id="image"
-              name="image"
-              placeholder="image"
-              type="text"
-              onChange={getElementValues}
-              required
-            />
-          </FormGroup>
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Label className="me-sm-2" for="color">
-              Color
-            </Label>
-            <Input
-              id="color"
-              name="color"
-              placeholder="color"
-              type="text"
-              onChange={getElementValues}
-              required
-            />
-          </FormGroup>
-          <Button type="submit" className="mt-4">
-            Create
-          </Button>
-        </Form>
+      <div className="container mb-5 mt-5">
+        <div className="row justify-content-center">
+          <Form onSubmit={createProduct} inline className="col-3 ">
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Label className="me-sm-2" for="name">
+                Name
+              </Label>
+              <Input
+                id="name"
+                name="name"
+                placeholder="name"
+                type="text"
+                onChange={getElementValues}
+                required
+              />
+            </FormGroup>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Label className="me-sm-2" for="price">
+                Price
+              </Label>
+              <Input
+                id="price"
+                name="price"
+                placeholder="price"
+                type="text"
+                onChange={getElementValues}
+                required
+              />
+            </FormGroup>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Label className="me-sm-2" for="category">
+                Category
+              </Label>
+              <Input
+                id="category"
+                name="category"
+                placeholder="category"
+                type="text"
+                onChange={getElementValues}
+                required
+              />
+            </FormGroup>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Label className="me-sm-2" for="image">
+                Image
+              </Label>
+              <Input
+                id="image"
+                name="image"
+                placeholder="image"
+                type="text"
+                onChange={getElementValues}
+                required
+              />
+            </FormGroup>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Label className="me-sm-2" for="color">
+                Color
+              </Label>
+              <Input
+                id="color"
+                name="color"
+                placeholder="color"
+                type="text"
+                onChange={getElementValues}
+                required
+              />
+            </FormGroup>
+            <Button type="submit" className="mt-4">
+              Create
+            </Button>
+          </Form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

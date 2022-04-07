@@ -11,6 +11,7 @@ import Login from "./pages/login/Login";
 import CreateProducts from "./pages/createProduct/CreateProducts";
 import { LoadingProvider } from "./context/loading/";
 import OurTeam from "./pages/ourTeam/OurTeam";
+import Index from "./pages/myOffer/Index";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path={"/login"} exact component={Login} />
             <Route path={"/createProducts"} exact component={CreateProducts} />
             <Route path={"/ourTeam"} exact component={OurTeam} />
+            <Route path={"/myOffer"} exact component={Index} />
             <Redirect to={"/error"} />
           </Switch>
           <Footer />

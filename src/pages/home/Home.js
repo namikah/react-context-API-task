@@ -3,6 +3,7 @@ import { useProductContext } from "../../context/Products";
 import Banner from "../../components/layouts/banner/Banner";
 import ProductPartial from "../../components/partials/ProductPartial";
 import OurTeam from "../ourTeam/OurTeam";
+import Index from "../myOffer/Index";
 
 function Home() {
   const [{ productsData }] = useProductContext([]);
@@ -13,12 +14,11 @@ function Home() {
   );
 
   return (
-    <div className="container">
+    <div className="">
       <Banner title={"Home"} />
-      <div className="row justify-content-center">
-        <ProductPartial productsData={getProductsForHome} />
-      </div>
-      <OurTeam/>
+      <ProductPartial productsData={getProductsForHome} />
+      <OurTeam />
+      <Index />
     </div>
   );
 }

@@ -78,45 +78,52 @@ function ProductDetails() {
   );
 
   return (
-    <div className="container">
+    <>
       <Banner title={"Product detail"} />
       {loading ? (
         <Spinner className="loading"></Spinner>
       ) : (
-        <div className="mt-5 mb-5 row justify-content-center">
-          <Card key={products?.id}>
-            <CardImg
-              alt="Card cap"
-              src={products?.image}
-              top
-              width="100%"
-              height={"500px"}
-            />
-            <CardBody>
-              <CardTitle tag="h5">{products?.name}</CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Price: {products?.price}
-              </CardSubtitle>
-              <CardText>Category: {products?.category}</CardText>
-            </CardBody>
-          </Card>
-          <Button style={{ color: "red" }} onClick={deleteProduct}>
-            Delete
-          </Button>
-          <Button
-            onClick={() => {
-              push({
-                pathname: "/products",
-                // search: "",
-                // state: true,
-              });
-            }}
-          >
-            {"<- view all products ->"}
-          </Button>
+        <div className="container">
+          <div className="mt-5 mb-5">
+          <div className="products-title">
+        <h4 className="title">DETAILS</h4>
+      </div>
+            <Card key={products?.id}>
+              <CardImg
+                alt="Card cap"
+                src={products?.image}
+                top
+                width="100%"
+                height={"500px"}
+              />
+              <CardBody>
+                <CardTitle tag="h5">{products?.name}</CardTitle>
+                <CardSubtitle className="mb-2 text-muted" tag="h6">
+                  Price: {products?.price}
+                </CardSubtitle>
+                <CardText>Category: {products?.category}</CardText>
+              </CardBody>
+              <div className="d-flex flex-column">
+                <Button style={{ color: "red" }} onClick={deleteProduct}>
+                  Delete
+                </Button>
+                <Button
+                  onClick={() => {
+                    push({
+                      pathname: "/products",
+                      // search: "",
+                      // state: true,
+                    });
+                  }}
+                >
+                  {"<- view all products ->"}
+                </Button>
+              </div>
+            </Card>
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
