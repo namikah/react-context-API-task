@@ -14,15 +14,17 @@ function Products() {
 
   if (!localStorage.getItem("login")) return <Redirect to={"/login"} />;
   return (
-    <div className="container">
+    <>
       <Banner title={"Products"} />
-      <div className="mt-5 mb-5 row justify-content-center">
-        <Button onClick={() => push("/createProducts")} className="mb-2">
-          Create
-        </Button>
-        <ProductPartial productsData={productsData} />
+      <div className="container">
+        <div className="mt-5 mb-5 row justify-content-center">
+          <Button onClick={() => push("/createProducts")} className="mb-2">
+            Create
+          </Button>
+          <ProductPartial productsData={productsData} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
