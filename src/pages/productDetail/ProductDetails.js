@@ -85,9 +85,9 @@ function ProductDetails() {
       ) : (
         <div className="container">
           <div className="mt-5 mb-5">
-          <div className="products-title">
-        <h4 className="title">DETAILS</h4>
-      </div>
+            <div className="products-title">
+              <h4 className="title">DETAILS</h4>
+            </div>
             <Card key={products?.id}>
               <CardImg
                 alt="Card cap"

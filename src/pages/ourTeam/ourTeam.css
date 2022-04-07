@@ -1,138 +1,138 @@
 #our-team {
-    scroll-behavior: smooth;
-    padding: 80px 0;
-  }
-  
-  #our-team .container .row .our-team-title {
-    text-align: center;
-    padding-bottom: 30px;
-  }
-  
-  #our-team .container .row .our-team-title h2 {
-    color: #3b566e;
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    padding-bottom: 15px;
-  }
-  
-  #our-team .container .row .our-team-title p {
-    color: #3b566ea9;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    max-width: 500px;
-  }
-  
-  #our-team .container .row .team-card {
-    border-radius: 5px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  
-  #our-team .container .row .team-card .item-card {
-    margin: 0 !important;
-    -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.089);
-            box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.089);
-    position: relative;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  #our-team .container .row .team-card .item-card:after {
-    content: '';
-    position: absolute;
-    background-color: #585ce9;
-    height: 60px;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -9999;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-  }
-  
-  #our-team .container .row .team-card .item-card:hover::after {
-    height: 110px;
-  }
-  
-  #our-team .container .row .team-card .item-card:hover .context .social-icon {
-    color: #fff;
-    opacity: 1;
-    font-size: 28px;
-    z-index: 1;
-    padding-right: 10px;
-    transform: translateY(0);
-    cursor: pointer;
-  }
-  
-  #our-team .container .row .team-card .item-card:hover .image {
-    -webkit-transform: translateY(65%);
-            transform: translateY(65%);
-  }
-  
-  #our-team .container .row .team-card .item-card .context {
-    width: 300px;
-    height: 220px;
-  }
-
-  #our-team .container .row .team-card .item-card .context h5 {
-    color: #fff;
-    font-family: "Nunito", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    padding-top: 10px;
-  }
-  
-  #our-team .container .row .team-card .item-card .context h6 {
-    color: #fff;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    -webkit-transition: 1.2s;
-    transition: 1.2s;
-    padding-bottom: 20px;
-  }
-  
-  #our-team .container .row .team-card .item-card .context .social-icon {
-    transition: 0.5s;
-    text-decoration: none;
-    color: #3b566e;
-    font-size: 0;
-    opacity: 0;
-    z-index: 1;
-    padding-right: 10px;
-    cursor: pointer;
-    transform: translateY(-200%);
+  scroll-behavior: smooth;
+  padding: 80px 0;
 }
-  
-  #our-team .container .row .team-card .item-card .context p {
-    padding: 20px;
-  }
-  
-  #our-team .container .row .team-card .item-card .image {
-    -webkit-transform: translateY(50%);
-            transform: translateY(50%);
-    -webkit-transition: .5s all;
-    transition: .5s all;
-  }
-  
-  #our-team .container .row .team-card .item-card img {
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
-    border: 5px solid #f5f5f5;
-    -webkit-transition: 1.2s;
-    transition: 1.2s;
-  }
+
+#our-team .container .row .our-team-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#our-team .container .row .our-team-title h2 {
+  color: #3b566e;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding-bottom: 15px;
+}
+
+#our-team .container .row .our-team-title p {
+  color: #3b566ea9;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  max-width: 500px;
+}
+
+#our-team .container .row .team-card {
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+#our-team .container .row .team-card .item-card {
+  margin: 0 !important;
+  -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.089);
+  box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.089);
+  position: relative;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#our-team .container .row .team-card .item-card:after {
+  content: "";
+  position: absolute;
+  background-color: #585ce9;
+  height: 60px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -9999;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#our-team .container .row .team-card .item-card:hover::after {
+  height: 110px;
+}
+
+#our-team .container .row .team-card .item-card:hover .context .social-icon {
+  color: #fff;
+  opacity: 1;
+  font-size: 28px;
+  z-index: 1;
+  padding-right: 10px;
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+#our-team .container .row .team-card .item-card:hover .image {
+  -webkit-transform: translateY(65%);
+  transform: translateY(65%);
+}
+
+#our-team .container .row .team-card .item-card .context {
+  width: 300px;
+  height: 220px;
+}
+
+#our-team .container .row .team-card .item-card .context h5 {
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  padding-top: 10px;
+}
+
+#our-team .container .row .team-card .item-card .context h6 {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  -webkit-transition: 1.2s;
+  transition: 1.2s;
+  padding-bottom: 20px;
+}
+
+#our-team .container .row .team-card .item-card .context .social-icon {
+  transition: 0.5s;
+  text-decoration: none;
+  color: #3b566e;
+  font-size: 0;
+  opacity: 0;
+  z-index: 1;
+  padding-right: 10px;
+  cursor: pointer;
+  transform: translateY(-200%);
+}
+
+#our-team .container .row .team-card .item-card .context p {
+  padding: 20px;
+}
+
+#our-team .container .row .team-card .item-card .image {
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+#our-team .container .row .team-card .item-card img {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  border: 5px solid #f5f5f5;
+  -webkit-transition: 1.2s;
+  transition: 1.2s;
+}
