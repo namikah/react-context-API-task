@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import Banner from "../../components/layouts/banner/Banner";
+import { useLoadingContext } from "../../context/loading";
 
 const loginTo = {
   username: "",
@@ -11,14 +12,17 @@ const loginTo = {
 function Login() {
   const { push } = useHistory();
   const [error, setError] = useState("");
-  const [login, setLogin] = React.useState(loginTo);
+  const [login, setLogin] = useState(loginTo);
+  const [{ setLocalLogin }] = useLoadingContext([]);
 
   const handleCheck = () => {
     if (login.username === "admin" && login.password === "admin") {
+      localStorage.setItem("login", JSON.stringify(true));
+      setLocalLogin(true);
       push({
         pathname: "/products",
-        search: "",
-        state: true,
+        // search: "",
+        // state: localStorage.getItem("login"),
       });
     } else {
       setError("username or password incorrect !");
@@ -33,10 +37,18 @@ function Login() {
 
   return (
     <div className="container d-flex flex-column align-items-center">
-       <Banner title={"Log in"}/>
-      <Form inline style={{border:"1px solid gray", width:"400px"}} className="p-5 col-3 mt-1 mb-1">
+      <Banner title={"Log in"} />
+      <Form
+        inline
+        style={{ border: "1px solid gray", width: "400px" }}
+        className="p-5 col-3 mt-1 mb-1"
+      >
         <FormGroup className="mb-2 me-sm-2 mb-sm-3">
-        <Label className="me-sm-1 d-flex justify-content-start" for="username" style={{color:"#6c757d"}}>
+          <Label
+            className="me-sm-1 d-flex justify-content-start"
+            for="username"
+            style={{ color: "#6c757d" }}
+          >
             Username
           </Label>
           <Input
@@ -48,7 +60,11 @@ function Login() {
           />
         </FormGroup>
         <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-          <Label className="me-sm-1 d-flex justify-content-start" for="password" style={{color:"#6c757d"}}>
+          <Label
+            className="me-sm-1 d-flex justify-content-start"
+            for="password"
+            style={{ color: "#6c757d" }}
+          >
             Password
           </Label>
           <Input
@@ -62,7 +78,9 @@ function Login() {
         <p
           style={{ color: "red" }}
           className="mt-3 d-flex justify-content-start"
-        >{error}</p>
+        >
+          {error}
+        </p>
 
         <Button onClick={handleCheck} className="mt-2">
           Submit

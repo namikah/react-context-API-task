@@ -20,7 +20,8 @@ import { useProductContext } from "../../context/Products";
 function ProductDetails() {
   const [products, setProducts] = useState();
   const [{ setProductsData }] = useProductContext([]);
-  const [{ loading, setLoading }] = useLoadingContext([]);
+  const [{ loading, setLoading, localLogin, setLocalLogin }] =
+    useLoadingContext([]);
   const { push } = useHistory();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
@@ -34,9 +35,9 @@ function ProductDetails() {
       )
       .then(({ data }) => {
         setProducts(data);
-        setLoading(false)
+        setLoading(false);
       });
-  }, [productId,setLoading]);
+  }, [productId, setLoading]);
 
   useEffect(() => {
     getData();
@@ -52,46 +53,69 @@ function ProductDetails() {
     getAllProducts();
   }, [getAllProducts]);
 
-  const deleteProduct = useCallback(() => {
-    productService.deleteProducts(productId).then(() => {
-      getAllProducts();
-      push({
-        pathname: "/products",
-        search: "",
-        state: true,
-      });
-    });
-  }, [productId, push, getAllProducts]);
+  const deleteProduct = useCallback(
+    (e) => {
+      if (localStorage.getItem("login") === null) setLocalLogin(false);
+      if (!localLogin) {
+        push({
+          pathname: "/login",
+          // search: "",
+          // state: true,
+        });
+      } else {
+        e.preventDefault();
+        productService.deleteProducts(productId).then(() => {
+          getAllProducts();
+          push({
+            pathname: "/products",
+            // search: "",
+            // state: true,
+          });
+        });
+      }
+    },
+    [productId, push, getAllProducts, localLogin, setLocalLogin]
+  );
 
   return (
     <div className="container">
       <Banner title={"Product detail"} />
-      {loading ? <Spinner className="loading"></Spinner> : <div className="mt-5 mb-5 row justify-content-center">
-        <Card key={products?.id}>
-          <CardImg
-            alt="Card cap"
-            src={products?.image}
-            top
-            width="100%"
-            height={"500px"}
-          />
-          <CardBody>
-            <CardTitle tag="h5">{products?.name}</CardTitle>
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
-              Price: {products?.price}
-            </CardSubtitle>
-            <CardText>Category: {products?.category}</CardText>
-          </CardBody>
-        </Card>
-        <Button style={{ color: "red" }} onClick={deleteProduct}>Delete</Button>
-        <Button onClick={() => {
-          push({
-            pathname: "/products",
-            search: "",
-            state: true,
-          });
-        }}>{"<- view all products ->"}</Button>
-      </div>}
+      {loading ? (
+        <Spinner className="loading"></Spinner>
+      ) : (
+        <div className="mt-5 mb-5 row justify-content-center">
+          <Card key={products?.id}>
+            <CardImg
+              alt="Card cap"
+              src={products?.image}
+              top
+              width="100%"
+              height={"500px"}
+            />
+            <CardBody>
+              <CardTitle tag="h5">{products?.name}</CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                Price: {products?.price}
+              </CardSubtitle>
+              <CardText>Category: {products?.category}</CardText>
+            </CardBody>
+          </Card>
+          <Button style={{ color: "red" }} onClick={deleteProduct}>
+            Delete
+          </Button>
+          <Button
+            onClick={() => {
+              push({
+                pathname: "/products",
+                // search: "",
+                // state: true,
+              });
+            }}
+          >
+            {"<- view all products ->"}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
